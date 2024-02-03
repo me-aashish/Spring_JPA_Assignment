@@ -1,6 +1,6 @@
 package com.aashish.springboot.springjpaassignment.entities;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -30,8 +30,9 @@ public class Author extends Auditable{
 	
 	@OneToMany(mappedBy = "author")
 	@JsonIgnore
-	List<Book>books;
+	Set<Book>books;
 
+	
 	public int getId() {
 		return id;
 	}
@@ -48,13 +49,15 @@ public class Author extends Auditable{
 		this.authorName = authorName;
 	}
 
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(Set<Book> books) {
 		this.books = books;
 	}
+
+	
 
 	
 	

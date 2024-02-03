@@ -1,6 +1,7 @@
 package com.aashish.springboot.springjpaassignment.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
@@ -10,8 +11,6 @@ import com.aashish.springboot.springjpaassignment.entities.Author;
 
 @Repository
 public interface AuthorRepository extends JpaRepositoryImplementation<Author, Integer> {
-
-
 	
-	
+	Author findById(int id);
 }
