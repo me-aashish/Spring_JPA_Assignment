@@ -1,6 +1,7 @@
 package com.aashish.springboot.springjpaassignment.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,4 +29,9 @@ public class AuthorController {
 	public Author creAuthor(@RequestBody Author author) {
 		return authorService.createAuthor(author);
 	}
+	
+	@GetMapping("/authorbooks")
+	 public List<Map<String, Object>> getBooksByAuthorWithKeys() {
+        return authorService.getBooksByAuthorWithKeys();
+    }
 }
