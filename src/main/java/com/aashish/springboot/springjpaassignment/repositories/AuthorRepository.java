@@ -3,8 +3,10 @@ package com.aashish.springboot.springjpaassignment.repositories;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.aashish.springboot.springjpaassignment.entities.Author;
@@ -19,4 +21,8 @@ public interface AuthorRepository extends JpaRepositoryImplementation<Author, In
              "JOIN books b ON a.author_id = b.author_id",
      nativeQuery = true)
 	 List<Map<String, Object>> getBooksByAuthorWithKeys();
+
+	 @Modifying
+	 @Query(value = "UPDATE Author a SET a.authorName = :newAuthorName WHERE a.id = :author_id")
+	 void updateAuthorName(@Param("author_id") int author_id, @Param("newAuthorName") String newAuthorName);
 }

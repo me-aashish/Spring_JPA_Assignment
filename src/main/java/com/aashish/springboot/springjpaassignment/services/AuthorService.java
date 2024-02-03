@@ -11,6 +11,7 @@ import com.aashish.springboot.springjpaassignment.repositories.AuthorRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Service
 public class AuthorService {
@@ -32,6 +33,14 @@ public class AuthorService {
 	public List<Map<String, Object>> getBooksByAuthorWithKeys() {
         return authorRepository.getBooksByAuthorWithKeys();
     }
+	
+	@Transactional
+	public void updateAuthorName(int author_id, String newAuthorName) {
+		Author author = authorRepository.findById(author_id);
+		author.setAuthorName(newAuthorName);
+		authorRepository.updateAuthorName(author_id, newAuthorName);
+		
+	}
 	 
 	
 	
